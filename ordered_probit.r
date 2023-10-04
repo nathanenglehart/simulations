@@ -37,6 +37,7 @@ for (y_star_i in y_star) {
 }
 
 model <- polr(as.factor(y) ~ x1 + x2, method="probit")
+summary(model)
+me <- ocME(model, rev.dum = TRUE, digits = 3) # https://rdrr.io/cran/erer/man/ocME.html
+print(me$out)
 
-# For ME see here: https://rdrr.io/cran/erer/man/ocME.html
-# lots of other libraries for polr ME don't comport with stata's correct margins results 
