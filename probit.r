@@ -1,7 +1,7 @@
 #!/usr/bin/env Rscript
 
 library(MASS)
-library(margins)
+library(marginaleffects)
 
 set.seed(123)
 
@@ -21,6 +21,6 @@ y_star = b0 + b1 * x1 + b2 * x2 + epsilon
 y=(y_star > 0)
 
 model <- glm(y ~ x1 + x2, family = binomial(link = "probit"))
-
 summary(model)
-summary(margins(model))
+me <- marginaleffects(model)
+summary(me)
