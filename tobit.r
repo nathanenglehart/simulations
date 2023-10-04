@@ -1,7 +1,8 @@
 #!/usr/bin/env Rscript
 
 library(MASS)
-library(VGAM)
+library(AER)
+library(marginaleffects)
 
 n <- 10000
 
@@ -26,5 +27,7 @@ for (i in 1:length(y_star)) {
 	}
 }
 
-model <- vglm(y ~ x1 + x2, family=tobit("Lower"=0))
+model <- tobit(y ~ x1 + x2, left = 0, data=data, x=TRUE)
 summary(model)
+me <- marginaleffects(model)
+summary(me)
