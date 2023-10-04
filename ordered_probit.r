@@ -1,7 +1,7 @@
 #!/usr/bin/env Rscript
 
 library(MASS)
-library(margins)
+library(erer)
 
 set.seed(123)
 
